@@ -23,31 +23,51 @@ footer{margin-top:40px;color:var(--soft);font-size:14px;border-top:1px solid var
   <div class="card">
     <h1 id="title">Connecting Garmin…</h1>
     <p id="msg">One moment.</p>
+    <p style="margin-top:14px"><a id="back" href="innerise://garmin" hidden>Back to InneRISE</a></p>
   </div>
   <footer>InneRISE is made by Shortbus Design Group, LLC. <a href="/privacy/">Privacy Policy</a></footer>
 </main>
 <script>
 // Garmin sends people here after they approve (or decline) sharing with InneRISE. This page keeps
-// nothing: it passes the one-time code straight to InneRISE's own server, which finishes the
-// connection. Until that server step is switched on, it only says so.
+// nothing: it posts the one-time code straight to InneRISE's own server, which finishes the
+// connection, then hands only the answer (never the code) back to the InneRISE app.
 (function () {
-  var SERVER = "";   // InneRISE's Garmin connection endpoint, set when it goes live
+  var SERVER = "https://kwutqztnpweecycahxon.supabase.co/functions/v1/connection-finish";
+  var RESULTS = ["connected", "cancelled", "unknown", "expired", "failed", "account_in_use", "invalid", "not_configured"];
   var q = new URLSearchParams(location.search);
   var code = q.get("code"), state = q.get("state"), error = q.get("error");
   if (location.search) history.replaceState(null, "", location.pathname);   // the code never stays in the address bar
-  var title = document.getElementById("title"), msg = document.getElementById("msg");
-  if (error) {
-    title.textContent = "Garmin wasn't connected";
-    msg.textContent = "Nothing was shared with InneRISE. You can close this page and try again in InneRISE whenever you like.";
-  } else if (code && state && SERVER) {
-    location.replace(SERVER + "?" + new URLSearchParams({ code: code, state: state }).toString());
-  } else if (code && state) {
-    title.textContent = "Garmin connections are almost ready";
-    msg.textContent = "InneRISE can't finish Garmin connections yet, so nothing was saved. You can close this page.";
-  } else {
-    title.textContent = "Garmin and InneRISE";
-    msg.textContent = "This page finishes connecting Garmin to InneRISE. Start from the InneRISE app.";
+  var title = document.getElementById("title"), msg = document.getElementById("msg"), back = document.getElementById("back");
+  function show(t, m) { title.textContent = t; msg.textContent = m; }
+  var ANSWERS = {
+    connected: ["Garmin is connected", "Going back to InneRISE."],
+    cancelled: ["Garmin wasn't connected", "Nothing was shared with InneRISE."],
+    expired: ["That took too long", "Nothing was saved. Tap Connect Garmin in InneRISE again."],
+    account_in_use: ["Garmin wasn't connected", "That Garmin account is already connected to another InneRISE account. Nothing was saved."],
+    not_configured: ["Garmin connections are almost ready", "InneRISE can't finish Garmin connections yet, so nothing was saved."]
+  };
+  var FAILED = ["Garmin wasn't connected", "Something went wrong and nothing was saved. Please try again from InneRISE."];
+  if (!state && !code && !error) {
+    show("Garmin and InneRISE", "This page finishes connecting Garmin to InneRISE. Start from the InneRISE app.");
+    return;
   }
+  function finish(result) {
+    if (RESULTS.indexOf(result) < 0) result = "failed";
+    var a = ANSWERS[result] || FAILED;
+    show(a[0], a[1]);
+    var app = "innerise://garmin?result=" + encodeURIComponent(result);   // only the answer, never the code or state
+    back.href = app; back.hidden = false;
+    location.replace(app);
+  }
+  fetch(SERVER, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ code: code, state: state, error: error }),
+    credentials: "omit",
+    referrerPolicy: "no-referrer"
+  }).then(function (r) { return r.json(); })
+    .then(function (o) { finish(o && o.result); })
+    .catch(function () { finish("failed"); });
 })();
 </script>
 </body></html>
