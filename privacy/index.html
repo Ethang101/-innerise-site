@@ -46,7 +46,7 @@ a{color:var(--accent)}
     <ul style="margin-bottom:0">
       <li>Apple's Screen Time keeps your app use on your phone. InneRISE never receives the names of the apps you use, the websites you visit, or how many minutes you spend on them.</li>
       <li>Our server stores only what features need to work between people, such as your first name, your Anchor requests, your challenges and, for Family Protection, whether a child's protections are working.</li>
-      <li>If you join activity challenges, InneRISE uses your Apple Health or Garmin activity only to count it in those challenges. It's free, never sold, never used for ads and never used for AI.</li>
+      <li>If you join activity challenges, InneRISE uses your Apple Health or Garmin activity only to count it in those challenges. We never sell or monetize it, use it for ads, or use it for AI (section 6).</li>
       <li>We don't sell your information, show ads, or use analytics or tracking tools.</li>
       <li>You can delete your account in the app at any time.</li>
     </ul>
@@ -132,37 +132,41 @@ a{color:var(--accent)}
   <p>InneRISE is meant for adults, and for children whose parent or guardian sets it up with Family Protection. We don't knowingly let a child under 13 create an account any other way. If you believe one has, contact us and we'll delete it.</p>
 
   <h2 id="activity">6. Apple Health and Garmin activity</h2>
-  <p>Activity challenges let you and the people you've connected with compete on steps, walking and running distance, cycling distance, floors climbed and active workout minutes. They're free. You choose whether to use Apple Health, Garmin, or both, and nothing is read until you join or create one of these challenges.</p>
+  <p>Activity challenges let you and the people you've connected with compete on steps, walking and running distance, cycling distance, floors climbed and active workout minutes. Connecting Apple Health or Garmin costs nothing, and taking part in an activity challenge you're invited to is free. We never charge for, sell or monetize your activity data.</p>
+  <h3>Your permission</h3>
+  <ul>
+    <li><strong>Apple Health:</strong> InneRISE asks Apple Health for permission when you first create or join an activity challenge, and reads only the kinds of data you allow. It never writes to Health. You can change or turn off access at any time in the Health app.</li>
+    <li><strong>Garmin:</strong> nothing is received from Garmin unless you connect your Garmin account in InneRISE and approve it on Garmin's own page, where you choose what to share. You can disconnect at any time in InneRISE or in Garmin Connect.</li>
+  </ul>
   <h3>What we receive</h3>
   <ul>
-    <li><strong>Apple Health</strong> (with your permission, read only; InneRISE never writes to Health): steps, walking and running distance, cycling distance, floors climbed and workouts (type, start and end, distance, pauses and elevation), with the app and device that recorded each one and whether it was typed in by hand.</li>
-    <li><strong>Garmin</strong> (only if you connect your Garmin account and approve it on Garmin's page): your daily steps, distance and floors with their 15-minute detail, and your recorded activities (type, start and end, distance, pauses, elevation and device model), with whether each was entered by hand.</li>
+    <li><strong>From Apple Health:</strong> steps, walking and running distance, cycling distance, floors climbed and workouts (type, start and end, distance, pauses and elevation), with the app and device that recorded each one and whether it was typed in by hand.</li>
+    <li><strong>From Garmin:</strong> your daily steps, distance and floors, with whatever times Garmin provides for them, and your recorded activities (type, start and end, distance, pauses, elevation and device model), with whether each was entered by hand.</li>
     <li>We keep only the days inside the challenges you've joined. We never ask for routes or GPS tracks, heart rate, sleep, stress, women's health or medical records.</li>
   </ul>
   <h3>How we use it</h3>
   <ul>
-    <li>Only to count your activity in the challenges you join: our server checks that each record was recorded by a device and not typed in, counts activity once when two devices recorded the same thing, and works out your daily result, total or points and place.</li>
+    <li>Only to count your activity in the challenges you join: our server checks that each record was recorded by a device and not typed in, counts activity once when two devices recorded the same thing, and works out your daily result, total or points, and place.</li>
     <li>People in the same challenge see those results, credited to Apple Health or Garmin and the device model. If you keep your progress private, they see only your place. Your individual activity records are never shown to anyone else.</li>
   </ul>
-  <h3>Who receives it</h3>
+  <h3>Where it's kept, and who receives it</h3>
   <ul>
-    <li><strong>Supabase</strong> hosts our server and database and stores this data on our behalf.</li>
+    <li><strong>Supabase</strong> is our hosting provider. Your activity data is stored in our database on Supabase's servers, which Supabase runs for us. Supabase handles it only to provide that hosting.</li>
     <li><strong>Apple</strong> delivers challenge notifications, which can include first names and challenge results.</li>
-    <li>No one else. We don't use integration partners, data aggregators, or AI or data-processing services for this data.</li>
+    <li>We don't share it with anyone else: no integration partners, data aggregators, advertisers, or AI or data-processing services, except where the law requires it.</li>
   </ul>
   <h3>What we never do with it</h3>
   <ul>
-    <li>We never sell, rent or monetize Apple Health or Garmin data, or share it for advertising or marketing.</li>
+    <li>We never sell, rent or monetize Apple Health or Garmin data, or use or share it for advertising or marketing.</li>
     <li>No AI system processes it, and it's never used to train, evaluate or improve AI models.</li>
   </ul>
-  <h3>How long we keep it</h3>
-  <p>[RETENTION PERIOD: NOT FINAL, PENDING APPROVAL.] Your final place and total stay in your challenge history until you delete your account.</p>
-  <h3>Your choices</h3>
+  <h3>How long we keep it, and deleting it</h3>
   <ul>
-    <li><strong>Withdraw consent:</strong> disconnect Garmin in InneRISE or in Garmin Connect, or turn off InneRISE's access in the Health app. New data stops at once.</li>
-    <li><strong>Copy, correct or delete it:</strong> email us for a copy of your activity data or to correct or delete it, or delete your account, which deletes all of it.</li>
+    <li>We delete your activity records 90 days after the challenge they were used for ends. Your final place and total stay in your challenge history until you delete your account.</li>
+    <li>We delete them sooner if you ask: when you disconnect Garmin, we delete the Garmin activity records we hold for you, and you can email us at any time to delete your Apple Health or Garmin activity records.</li>
+    <li>Deleting your account deletes all of your activity records.</li>
+    <li>Turning off Apple Health access or disconnecting Garmin stops new data at once. You can also email us for a copy of your activity data, or to correct it.</li>
   </ul>
-  <p>Activity challenges aren't available on a child's phone.</p>
 
   <h2 id="notifications">7. Notifications</h2>
   <p>Alerts about Anchor requests, connections and family are delivered by Apple's push notification service. Their text can include first names and messages, for example "Sam asks to unlock". Reminders and alarms are scheduled on your phone.</p>
