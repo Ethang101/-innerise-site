@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>InneRISE · Garmin</title>
+<style>
+/* Same look as innerise.app, with no outside fonts or scripts: this page can carry a one-time Garmin sign-in code. */
+:root{--paper:#F5F8FA;--ink:#0F2A44;--soft:#4E5B6B;--rule:#DDE5EC;--accent:#1B8A8F;--card:#FFFFFF;
+  --display:"Montserrat","Helvetica Neue",Arial,sans-serif;--body:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme: dark){:root{--paper:#0B1F33;--ink:#EEF1F5;--soft:#A9B4C2;--rule:#1E3A57;--accent:#4FD1C5;--card:#10283F;color-scheme:dark}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:680px;margin:0 auto;padding:64px 20px 72px}
+.wm{font-family:var(--display);font-size:34px;letter-spacing:-.01em}
+.wm .a{font-weight:300} .wm .b{font-weight:700;font-style:italic;color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin-top:28px}
+h1{font-family:var(--display);font-size:20px;margin:0 0 6px}
+p{margin:0}
+a{color:var(--accent)}
+footer{margin-top:40px;color:var(--soft);font-size:14px;border-top:1px solid var(--rule);padding-top:16px}
+</style></head><body>
+<main class="wrap">
+  <div class="wm"><span class="a">Inne</span><span class="b">RISE</span></div>
+  <div class="card">
+    <h1 id="title">Connecting Garmin…</h1>
+    <p id="msg">One moment.</p>
+  </div>
+  <footer>InneRISE is made by Shortbus Design Group, LLC. <a href="/privacy/">Privacy Policy</a></footer>
+</main>
+<script>
+// Garmin sends people here after they approve (or decline) sharing with InneRISE. This page keeps
+// nothing: it passes the one-time code straight to InneRISE's own server, which finishes the
+// connection. Until that server step is switched on, it only says so.
+(function () {
+  var SERVER = "";   // InneRISE's Garmin connection endpoint, set when it goes live
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code"), state = q.get("state"), error = q.get("error");
+  if (location.search) history.replaceState(null, "", location.pathname);   // the code never stays in the address bar
+  var title = document.getElementById("title"), msg = document.getElementById("msg");
+  if (error) {
+    title.textContent = "Garmin wasn't connected";
+    msg.textContent = "Nothing was shared with InneRISE. You can close this page and try again in InneRISE whenever you like.";
+  } else if (code && state && SERVER) {
+    location.replace(SERVER + "?" + new URLSearchParams({ code: code, state: state }).toString());
+  } else if (code && state) {
+    title.textContent = "Garmin connections are almost ready";
+    msg.textContent = "InneRISE can't finish Garmin connections yet, so nothing was saved. You can close this page.";
+  } else {
+    title.textContent = "Garmin and InneRISE";
+    msg.textContent = "This page finishes connecting Garmin to InneRISE. Start from the InneRISE app.";
+  }
+})();
+</script>
+</body></html>
