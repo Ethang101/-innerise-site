@@ -46,6 +46,7 @@ a{color:var(--accent)}
     <ul style="margin-bottom:0">
       <li>Apple's Screen Time keeps your app use on your phone. InneRISE never receives the names of the apps you use, the websites you visit, or how many minutes you spend on them.</li>
       <li>Our server stores only what features need to work between people, such as your first name, your Anchor requests, your challenges and, for Family Protection, whether a child's protections are working.</li>
+      <li>If you join activity challenges, InneRISE uses your Apple Health or Garmin activity only to count it in those challenges. It's free, never sold, never used for ads and never used for AI.</li>
       <li>We don't sell your information, show ads, or use analytics or tracking tools.</li>
       <li>You can delete your account in the app at any time.</li>
     </ul>
@@ -100,6 +101,7 @@ a{color:var(--accent)}
       <tr><td>My Anchor</td><td>Your first name and your Anchors' first names; unlock requests (when your lock ends, when you asked, who answered and how many minutes they approved); invitation codes, which stop working after an hour</td><td>You and your Anchors</td></tr>
       <tr><td>Connections</td><td>Your first name; your connections and the labels you give them; your groups and their names; encouragements you send; your inbox messages; if you add your phone number, its fingerprint and last two digits (section 4)</td><td>Your connections and group members. Your inbox: only you. The fingerprint: no one.</td></tr>
       <tr><td>Challenges</td><td>Title, prize, dates, who's taking part, and each day's result (kept or missed, or the minutes saved you enter)</td><td>People in that challenge</td></tr>
+      <tr><td>Activity challenges</td><td>See section 6</td><td>Your results: people in that challenge. Your activity records: only you.</td></tr>
       <tr><td>Family Protection</td><td>See section 5</td><td>The child's linked parents</td></tr>
       <tr><td>Notifications</td><td>Your phone's notification address (push token)</td><td>Our server only</td></tr>
       <tr><td>Subscriptions</td><td>Product, status, renewal and expiry dates, and Apple's transaction ID</td><td>You</td></tr>
@@ -129,30 +131,65 @@ a{color:var(--accent)}
   <p>The child's linked parents can see this information. If a child's account is deleted, they see that it was deleted, with the child's name, until they dismiss it. If a child uses Connections or Challenges, sections 3 and 4 apply to them too.</p>
   <p>InneRISE is meant for adults, and for children whose parent or guardian sets it up with Family Protection. We don't knowingly let a child under 13 create an account any other way. If you believe one has, contact us and we'll delete it.</p>
 
-  <h2 id="notifications">6. Notifications</h2>
+  <h2 id="activity">6. Apple Health and Garmin activity</h2>
+  <p>Activity challenges let you and the people you've connected with compete on steps, walking and running distance, cycling distance, floors climbed and active workout minutes. They're free. You choose whether to use Apple Health, Garmin, or both, and nothing is read until you join or create one of these challenges.</p>
+  <h3>What we receive</h3>
+  <ul>
+    <li><strong>Apple Health</strong> (with your permission, read only; InneRISE never writes to Health): steps, walking and running distance, cycling distance, floors climbed and workouts (type, start and end, distance, pauses and elevation), with the app and device that recorded each one and whether it was typed in by hand.</li>
+    <li><strong>Garmin</strong> (only if you connect your Garmin account and approve it on Garmin's page): your daily steps, distance and floors with their 15-minute detail, and your recorded activities (type, start and end, distance, pauses, elevation and device model), with whether each was entered by hand.</li>
+    <li>We keep only the days inside the challenges you've joined. We never ask for routes or GPS tracks, heart rate, sleep, stress, women's health or medical records.</li>
+  </ul>
+  <h3>How we use it</h3>
+  <ul>
+    <li>Only to count your activity in the challenges you join: our server checks that each record was recorded by a device and not typed in, counts activity once when two devices recorded the same thing, and works out your daily result, total or points and place.</li>
+    <li>People in the same challenge see those results, credited to Apple Health or Garmin and the device model. If you keep your progress private, they see only your place. Your individual activity records are never shown to anyone else.</li>
+  </ul>
+  <h3>Who receives it</h3>
+  <ul>
+    <li><strong>Supabase</strong> hosts our server and database and stores this data on our behalf.</li>
+    <li><strong>Apple</strong> delivers challenge notifications, which can include first names and challenge results.</li>
+    <li>No one else. We don't use integration partners, data aggregators, or AI or data-processing services for this data.</li>
+  </ul>
+  <h3>What we never do with it</h3>
+  <ul>
+    <li>We never sell, rent or monetize Apple Health or Garmin data, or share it for advertising or marketing.</li>
+    <li>No AI system processes it, and it's never used to train, evaluate or improve AI models.</li>
+  </ul>
+  <h3>How long we keep it</h3>
+  <p>[RETENTION PERIOD: NOT FINAL, PENDING APPROVAL.] Your final place and total stay in your challenge history until you delete your account.</p>
+  <h3>Your choices</h3>
+  <ul>
+    <li><strong>Withdraw consent:</strong> disconnect Garmin in InneRISE or in Garmin Connect, or turn off InneRISE's access in the Health app. New data stops at once.</li>
+    <li><strong>Copy, correct or delete it:</strong> email us for a copy of your activity data or to correct or delete it, or delete your account, which deletes all of it.</li>
+  </ul>
+  <p>Activity challenges aren't available on a child's phone.</p>
+
+  <h2 id="notifications">7. Notifications</h2>
   <p>Alerts about Anchor requests, connections and family are delivered by Apple's push notification service. Their text can include first names and messages, for example "Sam asks to unlock". Reminders and alarms are scheduled on your phone.</p>
 
-  <h2 id="payments">7. Subscriptions and payments</h2>
+  <h2 id="payments">8. Subscriptions and payments</h2>
   <p>Purchases are made through Apple. We never see your card or payment details. Apple sends us a signed record of each purchase, which we check and store with your account (section 3) so your plan works. We include your InneRISE account ID with the purchase so Apple's record and your account match. You can manage or cancel a subscription in iPhone Settings → your name → Subscriptions.</p>
 
-  <h2 id="services">8. Services InneRISE uses</h2>
+  <h2 id="services">9. Services InneRISE uses</h2>
   <ul>
     <li><strong>Supabase</strong> runs our server and database. It may keep short-term technical logs, such as IP addresses, as part of running the service.</li>
-    <li><strong>Apple</strong> provides Sign in with Apple, push notifications, App Store purchases, Screen Time and Apple Music.</li>
+    <li><strong>Apple</strong> provides Sign in with Apple, push notifications, App Store purchases, Screen Time, Apple Health and Apple Music.</li>
+    <li><strong>Garmin</strong>, if you connect your Garmin account, sends your activity to our server (section 6). Garmin's own privacy policy applies to your Garmin account.</li>
     <li><strong>An email delivery service</strong> sends sign-in codes and receives your email address to do so.</li>
     <li><strong>Links and music you add:</strong> link previews, YouTube thumbnails, Apple Music search and players from YouTube, Instagram, Spotify or SoundCloud connect your phone directly to those services. They have their own privacy policies.</li>
     <li><strong>Messages and Mail:</strong> invitations and "Share my week" open Messages, Mail or the share sheet. You choose who receives them, and we don't get a copy.</li>
   </ul>
   <p>We share your information only as described here, or when the law requires it.</p>
 
-  <h2 id="dont">9. What we don't do</h2>
+  <h2 id="dont">10. What we don't do</h2>
   <ul>
     <li>We don't sell or rent your information.</li>
     <li>We don't use advertising, analytics or tracking tools, or work with data brokers.</li>
     <li>We don't use Screen Time information for marketing or advertising.</li>
+    <li>We don't sell or monetize Apple Health or Garmin data, or use it for advertising or AI (section 6).</li>
   </ul>
 
-  <h2 id="retention">10. How long we keep it, and deleting your account</h2>
+  <h2 id="retention">11. How long we keep it, and deleting your account</h2>
   <p>We keep your information while your account is open. Anchor invitation codes and Family Protection link codes stop working after an hour, and a passcode reset is held for up to 24 hours.</p>
   <p>To delete your account: <strong>Protection → Account → Delete Account.</strong> If you use Sign in with Apple, you confirm with Apple, and we revoke InneRISE's Sign in with Apple access. Choose <strong>Delete Account</strong> to keep what's on your phone (goals, Inspiration, alarms), or <strong>Delete Account &amp; Local Data</strong> to erase those too. Screen Time limits and Family Protection on the phone stay in place either way. On a child's phone, deleting needs the parent passcode.</p>
   <p>Deleting removes your account and the information tied to it from our server, except what other people still need:</p>
@@ -165,7 +202,7 @@ a{color:var(--accent)}
   </ul>
   <p>Deleting the app alone doesn't delete your account. Your sign-in stays in the iPhone's Keychain so you can get back in.</p>
 
-  <h2 id="security">11. Security</h2>
+  <h2 id="security">12. Security</h2>
   <ul>
     <li>Connections between the app and our server are encrypted.</li>
     <li>Access rules on our database limit each person to what's described in this policy.</li>
@@ -173,18 +210,18 @@ a{color:var(--accent)}
     <li>Unlock codes and settings passcodes are stored only in hashed form, phone numbers only as fingerprints, and passcode resets locked for the child's phone.</li>
   </ul>
 
-  <h2 id="rights">12. Your choices and rights</h2>
+  <h2 id="rights">13. Your choices and rights</h2>
   <ul>
     <li>Change your name, your phone number and whether people can find you by it in the app.</li>
     <li>Turn off notifications or Screen Time access at any time in iPhone Settings.</li>
-    <li>Delete your account in the app (section 10).</li>
+    <li>Delete your account in the app (section 11).</li>
     <li>Email us to ask for a copy of what our server holds about you, or to correct or delete it. We'll reply within 30 days. Depending on where you live, you may have further rights, and you can use them the same way.</li>
   </ul>
 
-  <h2 id="changes">13. Changes to this policy</h2>
+  <h2 id="changes">14. Changes to this policy</h2>
   <p>If this policy changes, we'll update the date at the top and describe important changes in the app's release notes.</p>
 
-  <h2 id="contact">14. Contact</h2>
+  <h2 id="contact">15. Contact</h2>
   <div class="contact">
     <p style="margin:0">Shortbus Design Group, LLC<br>
     Email: <a href="mailto:support@innerise.app">support@innerise.app</a></p>
