@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>InneRISE · Fitbit</title>
+<style>
+/* Same look as innerise.app, with no outside fonts or scripts: this page can carry a one-time Fitbit sign-in code. */
+:root{--paper:#F5F8FA;--ink:#0F2A44;--soft:#4E5B6B;--rule:#DDE5EC;--accent:#1B8A8F;--card:#FFFFFF;
+  --display:"Montserrat","Helvetica Neue",Arial,sans-serif;--body:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme: dark){:root{--paper:#0B1F33;--ink:#EEF1F5;--soft:#A9B4C2;--rule:#1E3A57;--accent:#4FD1C5;--card:#10283F;color-scheme:dark}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:680px;margin:0 auto;padding:64px 20px 72px}
+.wm{font-family:var(--display);font-size:34px;letter-spacing:-.01em}
+.wm .a{font-weight:300} .wm .b{font-weight:700;font-style:italic;color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin-top:28px}
+h1{font-family:var(--display);font-size:20px;margin:0 0 6px}
+p{margin:0}
+a{color:var(--accent)}
+footer{margin-top:40px;color:var(--soft);font-size:14px;border-top:1px solid var(--rule);padding-top:16px}
+</style></head><body>
+<main class="wrap">
+  <div class="wm"><span class="a">Inne</span><span class="b">RISE</span></div>
+  <div class="card">
+    <h1 id="title">Connecting Fitbit…</h1>
+    <p id="msg">One moment.</p>
+    <p style="margin-top:14px"><a id="back" href="innerise://fitbit" hidden>Back to InneRISE</a></p>
+  </div>
+  <footer>InneRISE is made by Shortbus Design Group, LLC. <a href="/privacy/">Privacy Policy</a></footer>
+</main>
+<script>
+// Fitbit sends people here after they approve (or decline) sharing with InneRISE. This page keeps
+// nothing: it posts the one-time code straight to InneRISE's own server, which finishes the
+// connection, then hands only the answer (never the code) back to the InneRISE app.
+(function () {
+  var SERVER = "https://kwutqztnpweecycahxon.supabase.co/functions/v1/connection-finish";
+  var RESULTS = ["connected", "cancelled", "unknown", "expired", "failed", "account_in_use", "invalid", "not_configured"];
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code"), state = q.get("state"), error = q.get("error");
+  if (location.search) history.replaceState(null, "", location.pathname);   // the code never stays in the address bar
+  var title = document.getElementById("title"), msg = document.getElementById("msg"), back = document.getElementById("back");
+  function show(t, m) { title.textContent = t; msg.textContent = m; }
+  var ANSWERS = {
+    connected: ["Fitbit is connected", "Going back to InneRISE."],
+    cancelled: ["Fitbit wasn't connected", "Nothing was shared with InneRISE."],
+    expired: ["That took too long", "Nothing was saved. Tap Connect Fitbit in InneRISE again."],
+    account_in_use: ["Fitbit wasn't connected", "That Fitbit account is already connected to another InneRISE account. Nothing was saved."],
+    not_configured: ["Fitbit connections are almost ready", "InneRISE can't finish Fitbit connections yet, so nothing was saved."]
+  };
+  var FAILED = ["Fitbit wasn't connected", "Something went wrong and nothing was saved. Please try again from InneRISE."];
+  if (!state && !code && !error) {
+    show("Fitbit and InneRISE", "This page finishes connecting Fitbit to InneRISE. Start from the InneRISE app.");
+    return;
+  }
+  function finish(result) {
+    if (RESULTS.indexOf(result) < 0) result = "failed";
+    var a = ANSWERS[result] || FAILED;
+    show(a[0], a[1]);
+    var app = "innerise://fitbit?result=" + encodeURIComponent(result);   // only the answer, never the code or state
+    back.href = app; back.hidden = false;
+    location.replace(app);
+  }
+  fetch(SERVER, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ code: code, state: state, error: error }),
+    credentials: "omit",
+    referrerPolicy: "no-referrer"
+  }).then(function (r) { return r.json(); })
+    .then(function (o) { finish(o && o.result); })
+    .catch(function () { finish("failed"); });
+})();
+</script>
+</body></html>
