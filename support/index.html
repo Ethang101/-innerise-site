@@ -10,15 +10,18 @@
 <link rel="icon" type="image/png" sizes="48x48" href="../assets/img/favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/site.css?v=93872767d3">
+<link rel="stylesheet" href="../assets/site.css?v=6d087c35fd">
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
 <nav class="top" aria-label="Main"><div class="wrap">
   <a class="logo" href="../index.html"><img class="mark" src="../assets/img/innerise-icon.png" alt="" width="34" height="34"><span>Inne<b>RISE</b></span></a>
   <div class="links"><a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a><a href="../organizations/index.html">Organizations</a><a href="../support/index.html" class="on">Support</a></div>
-  <a class="btn btn-aqua nav-cta" href="../get/index.html">Get the app</a>
-</div></nav>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+</div>
+<div class="menu" id="site-menu"><div class="menu-in">
+  <a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a><a href="../organizations/index.html">Organizations</a><div class="menu-sub"><a href="../organizations/index.html#workplaces">Workplaces</a><a href="../organizations/index.html#schools">Schools</a><a href="../organizations/index.html#partners">Partners</a></div><a href="../support/index.html" class="on">Support</a>
+</div></div></nav>
 
 <header class="hero page vis">
   <div class="wrap hgrid">
@@ -70,7 +73,7 @@
 <section style="padding-top:40px"><div class="wrap">
   <div class="contact-card">
     <div><h3>Still need help?</h3><p>Questions, problems or feedback about InneRISE? Write to us any time and a real person will get back to you.</p></div>
-    <a class="mail" href="mailto:support@innerise.app"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#032433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>support@innerise.app</a>
+    <a class="mail" href="mailto:support@innerise.app"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>support@innerise.app</a>
   </div>
 </div></section>
 
@@ -88,12 +91,13 @@
     <p style="margin-top:14px">Questions? Email <span class="em">support@innerise.app</span></p>
   </div>
   <div class="col"><h5>InneRISE</h5>
-    <a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a><a href="../get/index.html">Get the app</a></div>
+    <a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a></div>
   <div class="col"><h5>Groups and help</h5>
     <a href="../workplaces/index.html">Workplaces</a><a href="../schools/index.html">Schools</a><a href="../partners/index.html">Partners</a><a href="../support/index.html">Support</a><a href="../privacy/index.html">Privacy Policy</a><a href="../terms/index.html">Terms of Service</a></div>
   <div class="legalline">© 2026 Shortbus Design Group, LLC. InneRISE is made by Shortbus Design Group, LLC.</div>
 </div></footer>
 <script>(function(){var n=document.querySelector('nav.top');if(!n)return;function f(){n.classList.toggle('at-top',window.scrollY<12)}f();window.addEventListener('scroll',f,{passive:true})})();</script>
+<script>(function(){var n=document.querySelector('nav.top'),b=n&&n.querySelector('.menu-btn');if(!b)return;function set(o){n.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Menu')}b.addEventListener('click',function(){set(!n.classList.contains('open'))});n.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){set(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});window.addEventListener('resize',function(){if(window.innerWidth>760)set(false)})})();</script>
 <script>(function(){var r=document.documentElement,bs=document.querySelectorAll('.plat button[data-plat]');if(!bs.length)return;function set(p){r.setAttribute('data-plat',p);for(var i=0;i<bs.length;i++){bs[i].setAttribute('aria-pressed',bs[i].getAttribute('data-plat')===p?'true':'false')}}for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){set(this.getAttribute('data-plat'))})}})();</script>
 <script>(function(){var els=document.querySelectorAll('.reveal');if(!els.length)return;if(!('IntersectionObserver' in window)){for(var i=0;i<els.length;i++)els[i].classList.add('in');return}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});for(var i=0;i<els.length;i++)io.observe(els[i])})();</script>
 </body>
