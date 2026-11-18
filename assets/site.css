@@ -574,3 +574,12 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
   .toc b{width:100%;margin-left:4px}
   .toc a{background:#fff;border:1px solid var(--line);border-radius:999px;font-size:13.5px;padding:7px 12px}
 }
+
+/* Organizations tab: the Workplaces, Schools and Partners pages, unchanged, one shown at a time by the switch */
+html.js [data-org-show]{display:none}
+html.js:not([data-org]) [data-org-show="workplaces"],html[data-org="workplaces"] [data-org-show="workplaces"],
+html[data-org="schools"] [data-org-show="schools"],html[data-org="partners"] [data-org-show="partners"]{display:block}
+/* the switch takes no room in the page, so each page's dark top reaches the very top; room under it for the page's own heading */
+.platbar.orgbar{margin-bottom:-14px}
+[data-org-show] > .hero.page.vis{padding-top:192px}
+@media (max-width:760px){.platbar.orgbar{margin-bottom:-10px}[data-org-show] > .hero.page.vis{padding-top:160px}}
