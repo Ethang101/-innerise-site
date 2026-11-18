@@ -477,3 +477,30 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
   .shots::before{width:118%}
   .shots::after{width:92%}
 }
+
+/* ---------- Workplaces / Schools / Partners: dashboard screens in a browser frame ---------- */
+.webshot{position:relative;padding:28px 0;width:114%;margin-right:-14%}
+.feat.flip .webshot{margin-right:0;margin-left:-14%}
+@media (max-width:980px){.webshot,.feat.flip .webshot{width:auto;margin:0}}
+.webshot::before{content:"";position:absolute;left:50%;top:50%;width:118%;aspect-ratio:1.5;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--blob),rgba(255,255,255,0) 75%);pointer-events:none}
+.browser{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#0b1f3a;box-shadow:0 34px 80px -24px rgba(3,20,45,.6),0 0 0 1px rgba(255,255,255,.1);rotate:1.2deg}
+.feat.flip .browser{rotate:-1.2deg}
+.browser .bar{height:30px;display:flex;align-items:center;gap:7px;padding:0 14px;background:linear-gradient(#1b3c61,#12304f)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.28)}
+.browser .bar i:first-child{background:#ff7d8f}
+.browser .bar i:nth-child(2){background:#4fe7d6}
+.browser .bar i:nth-child(3){background:#7aa7ff}
+.browser img{display:block;width:100%;height:auto}
+.orgnote{max-width:1180px;margin:22px auto 26px;padding:0 max(24px,env(safe-area-inset-left,0px));font-size:14px;color:var(--muted,#5b7187);text-align:center}
+@media (prefers-reduced-motion:no-preference){
+  .browser{transition:rotate .6s ease,translate .6s ease}
+  .webshot:hover .browser{rotate:0deg;translate:0 -6px}
+}
+@media (max-width:760px){
+  .webshot{padding:8px 0}
+  .browser{border-radius:12px;rotate:0deg}
+  .feat.flip .browser{rotate:0deg}
+  .browser .bar{height:22px;gap:5px;padding:0 10px}
+  .browser .bar i{width:7px;height:7px}
+  .orgnote{margin:14px auto 20px;font-size:13px}
+}
