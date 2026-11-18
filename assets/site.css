@@ -511,3 +511,66 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
 .start-card p.ask a{color:#5ff0dd;font-weight:700;text-decoration:none}
 .start-card p.ask a:hover{text-decoration:underline}
 @media (max-width:760px){.start-card .start-btns{width:100%}.start-card .start-btns .btn{flex:1 1 140px;justify-content:center}}
+
+/* ---------- Page heroes with a real screen (Families, Workplaces, Schools, Partners) ---------- */
+.hero.page.vis{padding:140px 0 200px}
+.hero.page.vis .hgrid{grid-template-columns:1fr 1.05fr;gap:56px}
+.hero.page.vis h1{font-size:60px;max-width:none}
+.hweb{position:relative;padding:24px 0}
+.hweb::before{content:"";position:absolute;left:50%;top:50%;width:130%;aspect-ratio:1.4;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(95,240,221,.34),rgba(95,240,221,0) 72%);pointer-events:none}
+.hweb::after{content:"";position:absolute;left:50%;top:50%;width:min(560px,94%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px dashed #5ff0dd;opacity:.3;pointer-events:none}
+.hweb .browser{width:118%;rotate:-2.5deg;z-index:1;box-shadow:0 50px 100px -30px rgba(0,8,20,.8),0 0 0 1px rgba(255,255,255,.16)}
+.fam-vis::before{content:"";position:absolute;left:50%;top:46%;width:620px;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(95,240,221,.3),rgba(95,240,221,0) 74%);pointer-events:none}
+.fam-vis::after{content:"";position:absolute;left:50%;top:46%;width:500px;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px dashed #5ff0dd;opacity:.3;pointer-events:none}
+.fam-vis .hero-phone{left:200px;width:280px;z-index:1}
+.fam-vis .hero-req{left:0;top:270px;width:300px;transform:rotate(-5deg);z-index:3;box-shadow:0 40px 80px rgba(0,10,25,.5),inset 0 0 0 2px #2b4356}
+@media (prefers-reduced-motion:no-preference){
+  .hweb .browser{animation:bob 8s ease-in-out infinite}
+  .hweb::after,.fam-vis::after{animation:spin 90s linear infinite}
+  .fam-vis .hero-req{animation:bob 6.5s ease-in-out -2s infinite}
+}
+@media (max-width:980px){
+  .hero.page.vis .hgrid{grid-template-columns:minmax(0,1fr)}
+  .hweb .browser{width:100%}
+  .hero.page.vis .visual{margin:10px auto 0;width:min(480px,100%)}
+}
+@media (max-width:760px){
+  .hero.page.vis{padding:110px 0 140px}
+  .hero.page.vis h1{font-size:44px}
+  .hweb{padding:10px 0 0}
+  .hweb .browser{rotate:-1.5deg}
+  .hweb::after{width:86%}
+  .fam-vis{height:480px}
+  .fam-vis::before{width:440px}
+  .fam-vis::after{width:340px}
+  .fam-vis .hero-phone{left:auto;right:0;margin-left:0;width:210px}
+  .fam-vis .hero-req{top:200px;width:220px;border-radius:36px 36px 0 0}
+}
+
+/* Families: what you can do, as a deep band with glass cards */
+.fam-band h2{color:#fff;margin-top:18px}
+.fam-band h2 .hl{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-deep .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);box-shadow:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.t-deep .card h3{color:#fff}
+.t-deep .card p{color:rgba(255,255,255,.76)}
+@media (prefers-reduced-motion:no-preference){
+  .t-deep .card{transition:translate .4s ease,background .4s ease}
+  .t-deep .card:hover{translate:0 -6px;background:rgba(255,255,255,.1)}
+}
+@media (max-width:760px){.fam-band h2 br{display:none}}
+
+/* Privacy Policy and Terms: "On this page" beside the text */
+.legal-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:56px;align-items:start;max-width:1100px;margin:0 auto}
+.legal-grid > *{min-width:0}
+.legal-grid .legal{margin:0}
+.toc{position:sticky;top:calc(100px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:2px;padding:18px;border-radius:22px;background:var(--tint);border:1px solid var(--line);max-height:calc(100vh - 130px);overflow:auto}
+.toc b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px 10px}
+.toc a{font-size:14.5px;line-height:1.35;color:var(--ink);text-decoration:none;padding:7px 10px;border-radius:10px;font-weight:600}
+.toc a:hover{background:#fff;color:var(--teal-ink)}
+.legal h2{scroll-margin-top:100px}
+@media (max-width:980px){
+  .legal-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .toc{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:6px}
+  .toc b{width:100%;margin-left:4px}
+  .toc a{background:#fff;border:1px solid var(--line);border-radius:999px;font-size:13.5px;padding:7px 12px}
+}
