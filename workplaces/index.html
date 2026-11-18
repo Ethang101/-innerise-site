@@ -97,5 +97,6 @@
   <div class="legalline">© 2026 Shortbus Design Group, LLC. InneRISE is made by Shortbus Design Group, LLC.</div>
 </div></footer>
 <script>(function(){var n=document.querySelector('nav.top');if(!n)return;function f(){n.classList.toggle('at-top',window.scrollY<12)}f();window.addEventListener('scroll',f,{passive:true})})();</script>
+<script>(function(){var r=document.documentElement,bs=document.querySelectorAll('.plat button');if(!bs.length)return;function set(p){r.setAttribute('data-plat',p);for(var i=0;i<bs.length;i++){bs[i].setAttribute('aria-pressed',bs[i].getAttribute('data-plat')===p?'true':'false')}}for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){set(this.getAttribute('data-plat'))})}})();</script>
 </body>
 </html>

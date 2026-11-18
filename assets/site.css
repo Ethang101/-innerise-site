@@ -262,3 +262,131 @@ a.store:hover{transform:translateY(-1px)}
 /* home hero: the slogan is the headline (Ethan 11-18) */
 h1.slogan-hero{font-size:clamp(64px,7.6vw,112px);line-height:.96;letter-spacing:-.04em;margin:26px 0 28px}
 @media (max-width:760px){h1.slogan-hero{font-size:clamp(44px,16vw,64px)}}
+
+/* ---------- Real app screens: feature tour with the iPhone / Android switch ---------- */
+/* clip (not hidden) so the switch bar can stay pinned while scrolling */
+@supports (overflow:clip){html,body{overflow-x:clip}}
+.tour-intro{padding-bottom:26px}
+.plat-scope{position:relative}
+.platbar{position:sticky;top:calc(86px + env(safe-area-inset-top,0px));z-index:40;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 16px 0;pointer-events:none;height:0;overflow:visible}
+.plat{pointer-events:auto;display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid #cfe3ea;box-shadow:0 14px 34px rgba(3,31,51,.16);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.plat button{font:inherit;font-weight:800;font-size:14.5px;color:var(--sea);background:transparent;border:0;border-radius:999px;padding:10px 18px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:background .2s ease,color .2s ease}
+.plat button:hover{background:var(--chip)}
+.plat button[aria-pressed="true"]{background:linear-gradient(180deg,#0b6a8f,#063d5c);color:#fff;box-shadow:0 6px 16px rgba(6,61,92,.35)}
+.plat .tag{font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;background:var(--chip);color:var(--teal-ink);border-radius:999px;padding:3px 7px}
+.plat button[aria-pressed="true"] .tag{background:var(--aqua);color:#032433}
+.platinline{display:flex;justify-content:center;margin-bottom:26px}
+
+.feat-band{padding:96px 0}
+.platbar + .feat-band{padding-top:110px}
+.feat-band.alt{background:var(--tint)}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.feat > *{min-width:0}
+.feat.flip .copy{order:2}
+.feat h3{font-size:46px;font-weight:800;letter-spacing:-1.5px;line-height:1.07;margin:12px 0 16px;text-wrap:balance}
+.feat .sub{font-size:18px}
+.facts{list-style:none;margin-top:26px;display:grid;gap:14px;max-width:600px}
+.facts li{position:relative;padding-left:36px;font-size:16.5px;line-height:1.55;color:#1d3a4d}
+.facts li::before{content:"";position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:8px;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d8a86' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
+.feat-band.alt .facts li::before{background-color:#fff}
+.facts b{color:var(--ink)}
+
+/* device frames */
+.shots{position:relative;height:650px}
+.pf{position:absolute;inset:0}
+.pf.android{display:none}
+html[data-plat="android"] .pf.ios{display:none}
+html[data-plat="android"] .pf.android{display:block}
+.device{margin:0;position:absolute}
+.device img{display:block;width:100%;height:auto}
+.device.iph{width:270px;border-radius:46px;padding:9px;background:#0a1824;box-shadow:0 40px 80px rgba(3,31,51,.3),inset 0 0 0 2px #2b4356}
+.device.iph img{border-radius:38px}
+.device.iph::before{content:"";position:absolute;left:50%;top:calc(9px + 1.15%);transform:translateX(-50%);width:27.5%;aspect-ratio:126/37;background:#000;border-radius:999px;z-index:2}
+.shots .iph.a{left:4%;top:0;z-index:2}
+.shots .iph.b{right:0;top:70px;z-index:1;transform:scale(.9);transform-origin:top right}
+.shots.one .iph.a{left:50%;transform:translateX(-50%)}
+.device.wch{width:150px;border-radius:40px;padding:8px;background:#0b0f13;box-shadow:0 26px 50px rgba(3,31,51,.38),inset 0 0 0 2px #3a454e}
+.device.wch img{border-radius:32px}
+.device.wch::after{content:"";position:absolute;right:-6px;top:26%;width:7px;height:17%;border-radius:4px;background:#3a454e}
+.shots .wch{left:0;bottom:40px;z-index:3}
+.shots.one .wch{left:auto;right:4%;bottom:40px}
+.shots.watches{height:440px}
+.shots.watches .pf.ios{display:flex;align-items:center;justify-content:center;gap:20px}
+html[data-plat="android"] .shots.watches .pf.ios{display:none}
+.shots.watches .wch{position:relative;left:auto;bottom:auto;width:31%;max-width:180px}
+.shots.watches .wch:nth-child(2){transform:translateY(-34px)}
+/* Android placeholders (until the Android app exists) */
+.device.droid{width:270px;border-radius:36px;padding:8px;background:#111b23;box-shadow:0 40px 80px rgba(3,31,51,.3),inset 0 0 0 2px #33424d;left:50%;top:0;transform:translateX(-50%)}
+.droid::before{content:"";position:absolute;left:50%;top:22px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#000;box-shadow:0 0 0 2px #22313b;z-index:2}
+.droid .scr{aspect-ratio:640/1387;border-radius:28px;background:radial-gradient(130% 70% at 50% 0%,#1aa3c6 0%,#0b6a8f 38%,#063d5c 72%,#031f33 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;text-align:center;padding:24px}
+.droid.cut .scr{aspect-ratio:640/714;border-radius:28px 28px 0 0}
+.droid .scr img{width:64px;height:64px;border-radius:16px;margin-bottom:10px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.droid b{font-size:22px;font-weight:800;letter-spacing:-.3px}
+.droid span{font-size:14px;color:rgba(255,255,255,.82)}
+.droid em,.gwatch em{font-style:normal;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:var(--aqua);color:#032433;border-radius:999px;padding:6px 11px;margin-top:10px}
+.device.gwatch{width:180px;aspect-ratio:1;border-radius:50%;padding:12px;background:#1b2229;box-shadow:0 26px 50px rgba(3,31,51,.38),inset 0 0 0 3px #3e4a54;left:0;bottom:40px;z-index:3}
+.gwatch::before,.gwatch::after{content:"";position:absolute;right:-5px;width:7px;height:15%;border-radius:4px;background:#3e4a54}
+.gwatch::before{top:25%}.gwatch::after{bottom:25%}
+.gwatch .scr{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 50% 28%,#1aa3c6,#0b6a8f 40%,#063d5c 75%,#031f33);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:16px}
+.gwatch b{font-size:16px;font-weight:800}
+.shots.one .gwatch{left:auto;right:4%}
+.shots.watches .gwatch{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);width:250px}
+.shots.watches .gwatch b{font-size:21px}
+/* cropped screen (top of the screen only, fading out) */
+.cutwrap{height:430px}
+.device.iph.cut,.device.droid.cut{width:340px;padding-bottom:0;border-radius:48px 48px 0 0;-webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}
+.device.iph.cut img{border-radius:40px 40px 0 0}
+.device.iph.cut::before{top:calc(9px + 2.2%)}
+/* hero: real screens */
+.visual .hero-phone{left:150px;top:0;width:290px;transform:rotate(4deg)}
+.visual .hero-watch{left:30px;top:380px;width:170px;transform:rotate(-6deg);z-index:3}
+.fp-home{padding:110px 0}
+
+@media (max-width:980px){
+  .feat{gap:44px}
+  .feat h3{font-size:38px}
+  .shots{transform:scale(.86);transform-origin:top center;height:560px}
+  .shots.watches{height:380px}
+}
+@media (max-width:760px){
+  .platbar{top:calc(70px + env(safe-area-inset-top,0px));padding-top:10px}
+  .plat button{font-size:13px;padding:9px 12px}
+  .plat .tag{display:none}
+  .feat-band{padding:70px 0}
+  .platbar + .feat-band{padding-top:96px}
+  .feat{grid-template-columns:1fr;gap:34px}
+  .feat.flip .copy{order:0}
+  .feat h3{font-size:34px;letter-spacing:-1px}
+  .feat h3 br{display:none}
+  .feat .sub{font-size:17px}
+  .facts li{font-size:15.5px}
+  .shots{transform:none;height:calc(min(50vw,230px) * 2.17 + 70px)}
+  .device.iph,.device.droid{width:min(50vw,230px);border-radius:34px;padding:7px}
+  .device.iph img{border-radius:28px}
+  .droid .scr{border-radius:28px;padding:16px}
+  .droid b{font-size:19px}
+  .shots .iph.a{left:0}
+  .shots .iph.b{transform:scale(.92)}
+  .device.wch{width:112px;border-radius:30px;padding:6px}
+  .device.wch img{border-radius:25px}
+  .shots .wch,.shots.one .wch{bottom:10px}
+  .device.gwatch{width:130px;bottom:10px}
+  .gwatch b{font-size:13.5px}
+  .gwatch em{font-size:9.5px;letter-spacing:.6px;padding:4px 8px;margin-top:6px;white-space:nowrap}
+  .shots.watches .gwatch b{font-size:19px}
+  .shots.watches .gwatch em{font-size:11px;padding:6px 11px}
+  .shots.watches{height:auto;padding:40px 0 10px}
+  .shots.watches .pf{position:relative}
+  .shots.watches .pf.android{height:280px}
+  .shots.watches .wch{width:31%;border-radius:22px;padding:5px}
+  .shots.watches .wch img{border-radius:18px}
+  .shots.watches .wch:nth-child(2){transform:translateY(-22px)}
+  .shots.watches .gwatch{width:220px}
+  .cutwrap{height:calc(min(80vw,320px) * 1.12 + 10px)}
+  .device.iph.cut,.device.droid.cut{width:min(80vw,320px);border-radius:40px 40px 0 0}
+  .device.iph.cut img{border-radius:33px 33px 0 0}
+  .visual .hero-phone{left:50%;margin-left:-112px;width:224px}
+  .visual .hero-watch{left:0;top:300px;width:118px}
+  .fp-home{padding:76px 0}
+}
+@media (prefers-reduced-motion:reduce){.plat button{transition:none}}
