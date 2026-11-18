@@ -390,3 +390,90 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
   .fp-home{padding:76px 0}
 }
 @media (prefers-reduced-motion:reduce){.plat button{transition:none}}
+
+/* ---------- Character: themed feature bands, motion, color ---------- */
+:root{--acc:#19b8b0;--acc2:#5ff0dd;--blob:rgba(95,240,221,.32)}
+.feat-band{position:relative;overflow:clip}
+.feat-band > .wrap{position:relative;z-index:1}
+.t-sea{--acc:#0b8fc0;--acc2:#19b8b0;--blob:rgba(26,163,198,.3)}
+.t-teal{--acc:#0d8a86;--acc2:#2fcfc0;--blob:rgba(47,207,192,.3)}
+.t-coral{--acc:#e14d6c;--acc2:#9a6bff;--blob:rgba(255,125,143,.3)}
+.t-mint{--acc:#0d8a86;--acc2:#0b8fc0;--blob:rgba(25,184,176,.3)}
+.t-deep{--acc:#5ff0dd;--acc2:#8fd8ff;--blob:rgba(26,163,198,.5)}
+.t-night{--acc:#c9bcff;--acc2:#8fd8ff;--blob:rgba(165,140,255,.45)}
+.t-sunrise{--acc:#d9466b;--acc2:#8a5cf0;--blob:rgba(255,125,143,.42)}
+/* rounded colored panels between white bands */
+.feat-band.pband{margin:26px max(14px,1.6vw);border-radius:46px;padding:116px 0}
+.t-deep{background:radial-gradient(70% 60% at 88% 8%,rgba(26,163,198,.55),rgba(26,163,198,0) 70%),radial-gradient(50% 50% at 0% 100%,rgba(95,240,221,.18),rgba(95,240,221,0) 70%),linear-gradient(160deg,#074a6e,#031f33 72%);color:#fff}
+.t-night{background:radial-gradient(45% 55% at 85% 10%,rgba(165,140,255,.45),rgba(165,140,255,0) 70%),linear-gradient(175deg,#211a5c 0%,#111640 50%,#070b26 100%);color:#fff}
+.t-night::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.7;background-image:radial-gradient(1.6px 1.6px at 24px 36px,#fff,transparent),radial-gradient(1px 1px at 130px 90px,rgba(255,255,255,.85),transparent),radial-gradient(1.4px 1.4px at 210px 170px,#fff,transparent),radial-gradient(1px 1px at 310px 46px,rgba(255,255,255,.7),transparent),radial-gradient(1.2px 1.2px at 390px 214px,#fff,transparent),radial-gradient(1px 1px at 70px 230px,rgba(255,255,255,.6),transparent);background-size:440px 270px}
+.t-sunrise{background:linear-gradient(180deg,#ffe3eb 0%,#f5e9ff 52%,#e0f3ff 100%)}
+.t-sunrise::before{content:"";position:absolute;width:640px;aspect-ratio:1;border-radius:50%;left:58%;bottom:-330px;pointer-events:none;background:radial-gradient(circle,rgba(255,154,168,.85) 0%,rgba(255,125,143,.45) 38%,rgba(255,125,143,0) 70%)}
+
+.t-mint{background:linear-gradient(160deg,#e2fbf4 0%,#e6f3ff 100%)}
+.t-deep h3,.t-night h3{color:#fff}
+.t-deep .sub,.t-night .sub{color:rgba(255,255,255,.8)}
+.t-deep .facts li,.t-night .facts li{color:rgba(255,255,255,.86)}
+.t-deep .facts b,.t-night .facts b{color:#fff}
+/* icon pill eyebrow + gradient second line */
+.eyebrow.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 15px 8px 11px;border-radius:999px;color:var(--acc);background:#fff;background:color-mix(in srgb,var(--acc) 11%,#fff);border:1px solid color-mix(in srgb,var(--acc) 22%,transparent)}
+.t-deep .eyebrow.pill,.t-night .eyebrow.pill{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.t-sunrise .eyebrow.pill,.t-mint .eyebrow.pill{background:rgba(255,255,255,.75)}
+.feat h3 .hl{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* fact checks take the band color */
+.facts li::before{background:var(--acc);opacity:.15}
+.facts li::after{content:"";position:absolute;left:5px;top:7px;width:14px;height:14px;background:var(--acc);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.t-deep .facts li::before,.t-night .facts li::before{opacity:.2}
+/* glow + slowly turning ring behind the phones */
+.pf{z-index:1}
+.shots::before{content:"";position:absolute;left:50%;top:48%;width:min(620px,118%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,var(--blob),rgba(255,255,255,0) 75%);pointer-events:none}
+.shots::after{content:"";position:absolute;left:50%;top:48%;width:min(500px,96%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px dashed var(--acc);opacity:.28;pointer-events:none}
+.shots.cutwrap::after{top:42%;width:min(400px,92%)}
+/* a little tilt */
+.shots .iph.a{rotate:-3deg}
+.shots .iph.b{rotate:4deg}
+.feat.flip .shots .iph.a{rotate:3deg}
+.feat.flip .shots .iph.b{rotate:-4deg}
+.shots.one .iph.a{rotate:-2deg}
+.feat.flip .shots.one .iph.a{rotate:2deg}
+.shots .iph.cut{rotate:0deg}
+.shots .wch{rotate:-7deg}
+.shots.watches .wch:nth-child(1){rotate:-6deg}
+.shots.watches .wch:nth-child(3){rotate:6deg}
+.shots .droid{rotate:-2deg}
+/* challenge names rolling by */
+.marquee{margin-top:46px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:flex;width:max-content}
+.marquee .dup{display:flex}
+.chip{flex:none;margin-right:12px;font-weight:800;font-size:15px;padding:12px 20px;border-radius:999px;white-space:nowrap}
+.chip.c0{background:#d8f7f2;color:#0b6a66}
+.chip.c1{background:#dff0fb;color:#0b5f86}
+.chip.c2{background:#ffe4e9;color:#b2334f}
+.chip.c3{background:#ece6ff;color:#5b42b8}
+/* motion (only when the visitor hasn't asked for less) */
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:no-preference){
+  .shots .iph.a,.shots .droid{animation:bob 7s ease-in-out infinite}
+  .shots .iph.b{animation:bob 7s ease-in-out -3.5s infinite}
+  .shots .wch,.shots .gwatch{animation:bob 6s ease-in-out -1.5s infinite}
+  .shots.watches .wch:nth-child(2){animation-delay:-3s}
+  .shots.watches .wch:nth-child(3){animation-delay:-4.5s}
+  .shots::after{animation:spin 90s linear infinite}
+  .visual .hero-phone{animation:bob 8s ease-in-out infinite}
+  .visual .hero-watch{animation:bob 6.5s ease-in-out -2s infinite}
+  .marquee .track{animation:marq 70s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  html.js .reveal{opacity:0;translate:0 36px;transition:opacity .8s ease,translate .8s cubic-bezier(.2,.7,.2,1)}
+  html.js .reveal.in{opacity:1;translate:0 0}
+  html.js .reveal.shots{transition-delay:.15s}
+}
+@media (max-width:760px){
+  .feat-band.pband{margin:14px 8px;border-radius:30px;padding:78px 0}
+  .t-sunrise::before{width:420px;left:30%;bottom:-240px}
+  .chip{font-size:13.5px;padding:10px 16px;margin-right:10px}
+  .marquee{margin-top:34px}
+  .shots::before{width:118%}
+  .shots::after{width:92%}
+}
