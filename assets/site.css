@@ -19,7 +19,9 @@ img{max-width:100%}
 h1,h2,h3{text-wrap:balance}
 
 /* nav */
-nav.top{position:absolute;left:0;right:0;top:0;z-index:5;color:#fff}
+nav.top{position:fixed;left:0;right:0;top:0;z-index:50;color:#fff;padding-top:env(safe-area-inset-top,0px);background:rgba(3,31,51,.84);-webkit-backdrop-filter:saturate(160%) blur(14px);backdrop-filter:saturate(160%) blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.08),0 10px 28px rgba(0,0,0,.18);transition:background .25s ease,box-shadow .25s ease}
+nav.top.at-top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+[id]{scroll-margin-top:100px}
 nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:86px;gap:20px}
 .logo{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:500;white-space:nowrap}
 .logo b{font-weight:800}
@@ -242,7 +244,7 @@ footer.site .legalline{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.0
   .faq details{padding:2px 20px}
   .soon{margin:10px 0 0}
 }
-@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}nav.top{transition:none}}
 
 /* App Store + Google Play badges (official artwork, never recolored) */
 .stores{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start}
@@ -255,3 +257,8 @@ a.store:hover{transform:translateY(-1px)}
 @media (min-width:761px){.ctas .stores + .btn{align-self:flex-start;min-height:54px}}
 @media (max-width:760px){.store img{height:48px}.stores{gap:12px}}
 @media (prefers-reduced-motion:reduce){a.store{transition:none}a.store:hover{transform:none}}
+/* real InneRISE app icon as the logo (same art as the App Store icon) */
+.logo img.mark{width:34px;height:34px;border-radius:8px;flex:none;box-shadow:0 4px 14px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.14)}
+/* home hero: the slogan is the headline (Ethan 11-18) */
+h1.slogan-hero{font-size:clamp(64px,7.6vw,112px);line-height:.96;letter-spacing:-.04em;margin:26px 0 28px}
+@media (max-width:760px){h1.slogan-hero{font-size:clamp(44px,16vw,64px)}}
