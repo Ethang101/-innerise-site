@@ -504,3 +504,10 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
   .browser .bar i{width:7px;height:7px}
   .orgnote{margin:14px auto 20px;font-size:13px}
 }
+
+/* ---------- Get started / Sign in (Workplaces, Schools, Partners) ---------- */
+.start-card .start-btns{display:flex;gap:12px;flex-wrap:wrap}
+.start-card p.ask{font-size:15px;margin-top:12px}
+.start-card p.ask a{color:#5ff0dd;font-weight:700;text-decoration:none}
+.start-card p.ask a:hover{text-decoration:underline}
+@media (max-width:760px){.start-card .start-btns{width:100%}.start-card .start-btns .btn{flex:1 1 140px;justify-content:center}}
