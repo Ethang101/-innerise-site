@@ -579,6 +579,7 @@ html[data-plat="android"] .shots.watches .pf.ios{display:none}
 html.js [data-org-show]{display:none}
 html.js:not([data-org]) [data-org-show="workplaces"],html[data-org="workplaces"] [data-org-show="workplaces"],
 html[data-org="schools"] [data-org-show="schools"],html[data-org="partners"] [data-org-show="partners"]{display:block}
-/* room under the switch for each page's own heading */
-[data-org-show] > .hero.page.vis{padding-top:178px}
-@media (max-width:760px){[data-org-show] > .hero.page.vis{padding-top:150px}}
+/* the switch takes no room in the page, so each page's dark top reaches the very top; room under it for the page's own heading */
+.platbar.orgbar{margin-bottom:-14px}
+[data-org-show] > .hero.page.vis{padding-top:192px}
+@media (max-width:760px){.platbar.orgbar{margin-bottom:-10px}[data-org-show] > .hero.page.vis{padding-top:160px}}
