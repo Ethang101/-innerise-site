@@ -807,7 +807,10 @@ function fromOldAddress() {
 }
 // The same place in the InneRISE app. Website-only sections open the organization's overview there.
 const appHref = (orgId, section) => `${APP_SCHEME}://org/${encodeURIComponent(orgId)}?section=${WEB_ONLY.includes(section) ? 'overview' : section}`;
-const appLink = () => (S.orgId && S.section
+// Only an iPhone or iPad can have the InneRISE app, so only they show "Open in the InneRISE app" (an iPad can call itself a Mac
+// with a touch screen). A computer has nothing to open.
+const APP_DEVICE = /iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 0);
+const appLink = () => (APP_DEVICE && S.orgId && S.section
   ? `<a class="btn btn-app" href="${esc(appHref(S.orgId, S.section))}" data-app-link>${icon('phone')}<span>Open in the InneRISE app</span></a>` : '');
 const brandOf = (family) => `InneRISE ${BRAND[family] || BRAND.any}`;
 // One header and one footer on every page: sign in, register and the dashboard. Their links go to the public pages on the
@@ -1161,7 +1164,7 @@ function registerPage() {
         <p>${memberOf.map((o) => `You're in ${esc(o.name)} as ${esc(article(typeLabel(o.member_type, words(o.kind)).toLowerCase()))}.`).join(' ')}
           Your challenges, rewards and everything else you do with ${memberOf.length === 1 ? esc(memberOf[0].name) : 'them'} are in the InneRISE app.</p>
         <p class="muted">The website is for administrators, managers and teachers. To help run ${memberOf.length === 1 ? esc(memberOf[0].name) : 'one of them'} here, ask one of its administrators to give you a role.</p>
-        <div><a class="btn btn-app" href="${esc(appHref(memberOf[0].org_id, 'overview'))}" data-app-link>${icon('phone')}<span>Open in the InneRISE app</span></a></div>
+        ${APP_DEVICE ? `<div><a class="btn btn-app" href="${esc(appHref(memberOf[0].org_id, 'overview'))}" data-app-link>${icon('phone')}<span>Open in the InneRISE app</span></a></div>` : ''}
       </div></section>`
     : step === 1 && memberOf.length
       ? `<p class="note">${memberOf.map((o) => `You're in ${esc(o.name)} as ${esc(article(typeLabel(o.member_type, words(o.kind)).toLowerCase()))}.`).join(' ')}
