@@ -12,13 +12,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,700;1,700&family=Source+Serif+4:ital,wght@1,400&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="../assets/fonts/PlusJakartaSans-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="site-header.css?v=48f35adc99">
   <script type="module" src="app.js"></script>
 </head>
 <body>
+<nav class="top" aria-label="Main"><div class="wrap">
+  <a class="logo" href="../index.html"><img class="mark" src="../assets/img/innerise-icon.png" alt="" width="34" height="34"><span>Inne<b>RISE</b></span></a>
+  <div class="links"><a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a><a href="../organizations/index.html">Organizations</a><a href="../dashboard/" class="on">Dashboard</a><a href="../support/index.html">Support</a></div>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+</div>
+<div class="menu" id="site-menu"><div class="menu-in">
+  <a href="../families/index.html">Families</a><a href="../index.html#challenges">Challenges</a><a href="../organizations/index.html">Organizations</a><div class="menu-sub"><a href="../organizations/index.html#workplaces">Workplaces</a><a href="../organizations/index.html#schools">Schools</a><a href="../organizations/index.html#partners">Partners</a></div><a href="../dashboard/" class="on">Dashboard</a><a href="../support/index.html">Support</a>
+</div></div></nav>
   <div id="app">
     <noscript><div class="splash"><p>The InneRISE dashboard needs JavaScript. Please turn it on and reload the page.</p></div></noscript>
   </div>
   <div id="layer"></div>
   <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+<script>(function(){var n=document.querySelector('nav.top');if(!n)return;function f(){n.classList.toggle('at-top',window.scrollY<12)}f();window.addEventListener('scroll',f,{passive:true})})();</script>
+<script>(function(){var n=document.querySelector('nav.top'),b=n&&n.querySelector('.menu-btn');if(!b)return;function set(o){n.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Menu')}b.addEventListener('click',function(){set(!n.classList.contains('open'))});n.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){set(false)})});document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});window.addEventListener('resize',function(){if(window.innerWidth>760)set(false)})})();</script>
 </body>
 </html>
