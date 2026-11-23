@@ -1,0 +1,249 @@
+/* Business Dashboard in the InneRISE website's own design (Ethan, 2026-11-23). Loaded last, so it only restyles: no
+   markup, link, action or data changes. Every value comes from ../assets/site.css: Plus Jakarta Sans, the deep-ocean
+   band cards (.t-deep .card: faint white fill, thin white line, no glow), the aqua and glass buttons (.btn-aqua,
+   .btn-glass), aqua eyebrow labels, and rounded-square icon tiles (.card .ic). Shared by every dashboard page. */
+
+:root {
+  --display: 'Plus Jakarta Sans', Inter, 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Plus Jakarta Sans', Inter, 'Helvetica Neue', Arial, sans-serif;
+  --accent: #5ff0dd;
+  --accent-soft: rgba(95, 240, 221, 0.12);
+  --accent-line: rgba(95, 240, 221, 0.45);
+  --link: #8ff3e6;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-light: linear-gradient(transparent, transparent);
+  --glass-solid: #0b3550;
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-top: 0 0 0 transparent;
+  --raised: rgba(255, 255, 255, 0.08);
+  --raised-shadow: none;
+  --shadow: 0 0 0 transparent;
+  --radius: 24px;
+  --divider: rgba(255, 255, 255, 0.1);
+  --label: #5ff0dd;
+}
+
+/* Cards: the website's deep-band cards. */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.card { padding: 28px; }
+
+/* Type: the website's headings and eyebrows. */
+.page-title { font-weight: 800; letter-spacing: -0.025em; }
+.company-name { font-weight: 800; letter-spacing: -0.02em; }
+.card-title { font-weight: 700; letter-spacing: -0.01em; }
+.section-label { font-size: 13px; font-weight: 800; letter-spacing: 1.8px; color: #5ff0dd; margin: 40px 2px 14px; }
+.w-inne { font-weight: 500; }
+.w-rise { font-weight: 800; font-style: normal; color: #fff; }
+
+/* Icons: rounded-square tiles instead of glowing rings. */
+.ring {
+  width: 40px; height: 40px; border: 0; border-radius: 12px;
+  background: rgba(95, 240, 221, 0.12); color: #5ff0dd;
+}
+.ring.lg { width: 56px; height: 56px; border: 0; border-radius: 18px; }
+.ring.sm { width: 30px; height: 30px; border-radius: 9px; }
+.ring.xs { width: 24px; height: 24px; border: 0; border-radius: 7px; }
+
+/* Buttons: secondary = the website's glass button; primary = the website's aqua button. */
+.btn {
+  min-height: 46px; padding: 0 22px; border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none; color: #fff; font-weight: 700; text-shadow: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn:hover { filter: none; background: rgba(255, 255, 255, 0.13); transform: translateY(-1px); }
+.btn:active { transform: none; box-shadow: none; }
+.btn .i { color: #5ff0dd; }
+.btn-primary {
+  border: 0;
+  background: linear-gradient(180deg, #6ff6e4, #1fc2b6);
+  color: #032433; text-shadow: none;
+  box-shadow: 0 8px 22px rgba(25, 184, 176, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.btn-primary:hover { background: linear-gradient(180deg, #7ff8e8, #22cbbe); }
+.btn-primary .i { color: #032433; }
+.btn-sm { min-height: 36px; padding: 0 15px; border-radius: 12px; }
+.link-btn, .chip-link {
+  border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06); box-shadow: none; color: #fff; font-weight: 700;
+}
+.link-btn:hover, .chip-link:hover { background: rgba(255, 255, 255, 0.12); }
+.icon-btn {
+  border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08); box-shadow: none; color: #fff;
+}
+.icon-btn:hover { filter: none; background: rgba(255, 255, 255, 0.14); }
+.icon-btn[aria-expanded='true'] { background: rgba(95, 240, 221, 0.16); border-color: rgba(95, 240, 221, 0.45); color: #fff; }
+
+/* Status chips: quieter. */
+.chip { border-radius: 999px; font-weight: 700; background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.14); }
+.chip-ok { color: #9BF0B4; background: rgba(52, 199, 89, 0.1); border-color: rgba(52, 199, 89, 0.3); }
+.chip-accent { color: #8ff3e6; background: rgba(95, 240, 221, 0.08); border-color: rgba(95, 240, 221, 0.3); }
+.chip .dot { box-shadow: none; }
+
+/* At a glance. */
+.stat { padding: 22px 24px; gap: 2px; }
+a.stat { border-color: rgba(255, 255, 255, 0.12); }
+a.stat:hover { border-color: rgba(95, 240, 221, 0.4); filter: none; }
+.stat .ring { margin-bottom: 14px; }
+.stat-num { font-weight: 800; letter-spacing: -0.02em; }
+
+/* Privacy: the website's tick list, each mark in a small tile. */
+.privacy-head { font-weight: 700; }
+.ticks li { line-height: 1.5; }
+.ticks .i { box-sizing: content-box; width: 14px; height: 14px; padding: 5px; margin-top: 0; border-radius: 8px; background: rgba(95, 240, 221, 0.12); }
+.ticks.never .i { background: rgba(242, 139, 139, 0.12); }
+
+/* Sidebar: plain, with a clear active page. */
+.sidebar { background: rgba(3, 31, 51, 0.55); border-right: 1px solid rgba(255, 255, 255, 0.08); }
+.side-label { font-weight: 800; letter-spacing: 1.6px; color: #5ff0dd; }
+.nav { gap: 2px; }
+.nav-link { border-radius: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.78); }
+.nav-link .ring { width: 32px; height: 32px; border-radius: 10px; background: transparent; color: rgba(255, 255, 255, 0.7); }
+.nav-link:hover { background: rgba(255, 255, 255, 0.06); }
+.nav-link.active { background: rgba(255, 255, 255, 0.09); border-color: transparent; box-shadow: inset 3px 0 0 #5ff0dd; color: #fff; }
+.nav-link.active .ring { background: rgba(95, 240, 221, 0.14); color: #5ff0dd; }
+
+/* Menus and fields: flat. */
+.menu { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3); }
+.demo-tag { border-radius: 999px; }
+
+
+/* Version 3 (Ethan, 2026-11-23: "try the white background but put the buttons and the rest to the blue like the rest
+   of the website"): the page is the website's white; cards and buttons are the website's deep-ocean blue. */
+.main { background: #f2fbfd; color: #062033; }
+.main .page-title, .main .company-name { color: #062033; }
+.main .page-head .page-title { color: #062033; }
+.main .page-sub { color: #4f6676; }
+.main .glass {
+  background: radial-gradient(70% 60% at 88% 8%, rgba(26, 163, 198, 0.45), rgba(26, 163, 198, 0) 70%), linear-gradient(160deg, #074a6e, #031f33 78%);
+  border: 0; box-shadow: 0 16px 40px rgba(3, 31, 51, 0.14);
+  -webkit-backdrop-filter: none; backdrop-filter: none; color: #EEF5FA;
+}
+.main .glass .company-name, .main .glass .card-title { color: #fff; }
+.main .section-label { color: #0d8a86; }
+/* Buttons sitting on the white (not inside a card): the website's deep-blue button. */
+.main .page-head .btn:not(.btn-primary), .main > .content > .btn:not(.btn-primary) {
+  background: linear-gradient(160deg, #074a6e, #031f33); border: 0; color: #fff;
+  box-shadow: 0 8px 20px rgba(3, 31, 51, 0.18);
+}
+.main .page-head .btn:not(.btn-primary):hover { background: linear-gradient(160deg, #0a5d84, #063d5c); }
+.main .site-foot, .main .site-foot * { color: #4f6676; }
+.main .site-foot .link-btn { color: #fff; border: 0; background: linear-gradient(160deg, #074a6e, #031f33); }
+/* The menu's top-right corner is rounded where it meets the page (Ethan, 2026-11-23). */
+.sidebar { border-top-right-radius: 28px; }
+
+/* Version 4 (Ethan, 2026-11-23: "bring the blue wave down like the rest of the pages on the website ... way too far with
+   the white"): the page head sits on the website's ocean with its waves, like the top of every website page; below the
+   waves the page is white with the blue cards. */
+.main { position: relative; isolation: isolate; }
+.main::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 330px; z-index: -1;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath d='M0 120 C 240 60 420 170 720 120 C 1000 72 1200 150 1440 100 L1440 200 L0 200Z' fill='rgba(255,255,255,.12)'/%3E%3Cpath d='M0 150 C 260 100 480 190 760 150 C 1040 110 1220 180 1440 140 L1440 200 L0 200Z' fill='rgba(255,255,255,.25)'/%3E%3Cpath d='M0 175 C 300 140 520 205 800 175 C 1080 145 1260 195 1440 170 L1440 200 L0 200Z' fill='%23f2fbfd'/%3E%3C/svg%3E") bottom / 100% 130px no-repeat,
+    radial-gradient(900px 420px at 85% 10%, rgba(95, 240, 221, 0.28), transparent 60%),
+    radial-gradient(700px 360px at 5% 90%, rgba(165, 140, 255, 0.25), transparent 60%),
+    linear-gradient(160deg, #0a5d84 0%, #063d5c 45%, #031f33 100%);
+}
+.main .page-head { margin-bottom: 150px; }
+.main .page-head .page-title { color: #fff; }
+.main .page-sub { color: rgba(255, 255, 255, 0.82); }
+.main .page-head .btn:not(.btn-primary) {
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: none; color: #fff;
+}
+.main .page-head .btn:not(.btn-primary):hover { background: rgba(255, 255, 255, 0.16); }
+@media (max-width: 760px) {
+  .main::before { height: 340px; }
+  .main .page-head { margin-bottom: 64px; }
+}
+
+/* Version 5 (Ethan, 2026-11-23: "use the existing InneRISE app's premium glass-and-bubble design as the reference ...
+   the business at the top needs to stand out more"). Cards are the app's ocean glass (OceanGlassRow: deep on the left,
+   lighter blue to the right, soft light from the upper right, a fine highlight on the top edge, depth at the bottom);
+   buttons are the app's raised glass capsules (RaisedGlassBackground); the business card is the app's hero card. */
+.main .glass {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.30) 0, rgba(255,255,255,.06) 4%, rgba(255,255,255,0) 12%),
+    radial-gradient(260px 260px at 100% 0%, rgba(255,255,255,.12), rgba(255,255,255,0) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.14) 100%),
+    linear-gradient(90deg, rgba(19,63,111,.95), rgba(63,141,201,.95));
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(8, 38, 72, .22);
+}
+.main .glass .ring, .main .ring { background: rgba(255,255,255,.14); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.35); }
+/* Buttons: the app's raised glass capsule. */
+.btn, .link-btn, .icon-btn, .chip-link {
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.45);
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 55%), linear-gradient(180deg, rgba(63,141,201,.95), rgba(19,63,111,.95));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 4px 8px rgba(0,0,0,.3);
+  color: #fff;
+}
+.btn:hover, .link-btn:hover, .icon-btn:hover, .chip-link:hover { background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 55%), linear-gradient(180deg, rgba(76,155,214,.95), rgba(24,72,124,.95)); }
+.btn .i { color: #52CAD3; }
+.btn-primary {
+  border: 1px solid rgba(255,255,255,.55);
+  background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 55%), linear-gradient(180deg, #52CAD3, #1E8EA0);
+  color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 6px 14px rgba(30,142,160,.35);
+}
+.btn-primary:hover { background: linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,0) 55%), linear-gradient(180deg, #62d6de, #2399ab); }
+.btn-primary .i { color: #fff; }
+.main .page-head .btn:not(.btn-primary) {
+  border: 1px solid rgba(255,255,255,.45);
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 55%), linear-gradient(180deg, rgba(63,141,201,.95), rgba(19,63,111,.95));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 4px 8px rgba(0,0,0,.3);
+}
+/* The business: the app's hero card, bigger and brighter so it leads the page. */
+.main .company-card {
+  padding: 34px 36px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.34) 0, rgba(255,255,255,.08) 4%, rgba(255,255,255,0) 12%),
+    radial-gradient(520px 320px at 100% 0%, rgba(82,202,211,.38), rgba(82,202,211,0) 70%),
+    radial-gradient(360px 240px at 0% 100%, rgba(165,140,255,.22), rgba(165,140,255,0) 70%),
+    linear-gradient(90deg, #133F6F, #3F8DC9);
+  border: 1px solid rgba(82,202,211,.55);
+  box-shadow: 0 22px 50px rgba(8, 38, 72, .35), 0 0 0 4px rgba(82,202,211,.12);
+}
+.main .company-card .company-name { font-size: 38px; letter-spacing: -.025em; }
+.main .company-card .ring.lg { width: 72px; height: 72px; border-radius: 22px; background: rgba(255,255,255,.18); }
+.main .company-card .ring.lg .i { width: 34px; height: 34px; }
+.main .company-card .meta { color: rgba(255,255,255,.85); }
+@media (max-width: 760px) { .main .company-card .company-name { font-size: 30px; } }
+
+/* Every page (Ethan approved v5, 2026-11-23): the ocean and wave sit behind each page's own heading instead of a fixed
+   height, so on People, Rewards, Settings and the rest nothing lands on the wave. On the Overview the business card still
+   rides the wave. */
+.main::before { content: none; }
+.main { overflow-x: clip; container-type: inline-size; }
+.main .page-head { position: relative; isolation: isolate; padding: 0 0 130px; margin-bottom: 34px; }
+.main .page-head::before {
+  content: ""; position: absolute; z-index: -1; top: -52px; bottom: 0; left: calc(50% - 50cqw - 44px); right: calc(50% - 50cqw - 44px);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath d='M0 120 C 240 60 420 170 720 120 C 1000 72 1200 150 1440 100 L1440 200 L0 200Z' fill='rgba(255,255,255,.12)'/%3E%3Cpath d='M0 150 C 260 100 480 190 760 150 C 1040 110 1220 180 1440 140 L1440 200 L0 200Z' fill='rgba(255,255,255,.25)'/%3E%3Cpath d='M0 175 C 300 140 520 205 800 175 C 1080 145 1260 195 1440 170 L1440 200 L0 200Z' fill='%23f2fbfd'/%3E%3C/svg%3E") bottom / 100% 110px no-repeat,
+    radial-gradient(900px 420px at 85% 10%, rgba(95, 240, 221, 0.28), transparent 60%),
+    radial-gradient(700px 360px at 5% 90%, rgba(165, 140, 255, 0.25), transparent 60%),
+    linear-gradient(160deg, #0a5d84 0%, #063d5c 45%, #031f33 100%);
+}
+.main .page-head + .company-card { margin-top: -120px; position: relative; z-index: 1; }
+.main .company-card { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .main .page-head { padding-bottom: 104px; margin-bottom: 26px; }
+  .main .page-head::before { top: -32px; left: calc(50% - 50cqw - 16px); right: calc(50% - 50cqw - 16px); background-size: 100% 80px, auto, auto, auto; }
+  .main .page-head + .company-card { margin-top: -96px; }
+}
+/* Anything sitting straight on the light page (filters, counts, labels, fields) reads in the website's dark navy. */
+.main .content { color: #062033; }
+.main .content .glass, .main .content .page-head, .main .content .glass *, .main .content .page-head * { --tx: 1; }
+.main .content > :not(.glass):not(.page-head):not(.section-label):not(:has(.glass)) { color: #062033; }
+.main .content :is(.muted, .field-inline, .meta, label):not(.glass *):not(.page-head *) { color: #4f6676; }
+.main .content :is(.input, select, input, textarea):not(.glass *):not(.page-head *) {
+  background: #fff; border: 1px solid #cfe0e7; color: #062033; box-shadow: 0 2px 6px rgba(3,31,51,.06);
+}
