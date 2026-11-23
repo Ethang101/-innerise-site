@@ -1,0 +1,251 @@
+/* InneRISE app look for the dashboards (Business, Education, Partners): one shared layer on top of styles.css.
+   Taken from the iPhone app's own screens (Growth, Challenges, Scroll Guard, My Anchor): the app's ocean background,
+   frosted glass cards that are darker on the left and lighter on the right, raised "bubble" buttons, the app's serif
+   card titles (New York on Apple devices) and its small spaced capitals for section labels.
+   The organization card at the top is the brightest glass on the page so it stands out.
+   Look only: no markup, wording, data or behavior changes. Never an aqua-filled button. */
+:root {
+  --app-top: #2b5e73; --app-mid: #294b6e; --app-bot: #1a324e;
+  --teal: #6fd3d6; --teal-soft: rgba(111, 211, 214, 0.16); --teal-line: rgba(111, 211, 214, 0.42);
+  --coral: #ff8f9c;
+  --body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, 'Helvetica Neue', Arial, sans-serif;
+  --display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, 'Helvetica Neue', Arial, sans-serif;
+  --serif: ui-serif, 'New York', 'Source Serif 4', Georgia, serif;
+  --text: #ffffff;
+  --text-2: rgba(255, 255, 255, 0.74);
+  --text-3: rgba(255, 255, 255, 0.56);
+  --label: rgba(255, 255, 255, 0.62);
+  --accent: #6fd3d6;
+  --link: #bff0ee;
+  --radius: 26px;
+  /* the app's glass: dark navy on the left, lighter sea blue on the right, a soft sheen on top */
+  --glass: linear-gradient(112deg, rgba(31, 57, 92, 0.9) 0%, rgba(52, 82, 118, 0.84) 48%, rgba(96, 138, 175, 0.8) 100%);
+  --glass-light: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 42%);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-top: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  --shadow: 0 14px 32px rgba(8, 22, 44, 0.34);
+  /* the app's bubble buttons */
+  --bubble: linear-gradient(180deg, #6489b1 0%, #46698f 46%, #2f4f76 100%);
+  --bubble-hover: linear-gradient(180deg, #6d93bb 0%, #4c7099 46%, #34567e 100%);
+  --bubble-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), inset 0 -2px 6px rgba(10, 24, 48, 0.22), 0 8px 18px rgba(8, 20, 42, 0.42);
+  --bubble-soft: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
+  --bubble-soft-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 10px rgba(8, 20, 42, 0.26);
+  --divider: rgba(255, 255, 255, 0.1);
+}
+body { font-family: var(--body); font-size: 15.5px; letter-spacing: -0.005em; }
+
+/* Page: the app's ocean, teal at the top to navy at the bottom */
+html { background-color: var(--app-bot); }
+body::before, body:has(.shell, .site-top.account)::before {
+  background: radial-gradient(1100px 520px at 78% -4%, rgba(120, 196, 214, 0.2), transparent 62%),
+    linear-gradient(180deg, var(--app-top) 0%, var(--app-mid) 52%, var(--app-bot) 100%);
+}
+
+/* Glass cards */
+.glass {
+  background: var(--glass-light), var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
+  box-shadow: var(--glass-top), var(--shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%);
+}
+.card { padding: 28px; }
+
+/* Type: app page titles in bold sans, card titles in the app's serif */
+.page-head { margin: 4px 0 28px; }
+.page-title { font-family: var(--display); font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: -0.025em; }
+.page-sub { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--text-2); margin-top: 8px; }
+.section-label { font-family: var(--body); font-weight: 600; font-size: 12.5px; letter-spacing: 0.16em; color: var(--label); margin: 40px 4px 14px; }
+.card-title { font-family: var(--serif); font-weight: 700; font-size: 25px; letter-spacing: -0.01em; }
+.wordmark { font-family: var(--display); }
+.w-rise { color: var(--teal); }
+
+/* Icons: the app's teal glyphs; the big ones sit in the app's soft ring (like Your Growth Today's sun) */
+.ring { border: 0; background: none; color: var(--teal); }
+.ring.lg {
+  width: 60px; height: 60px; border-radius: 50%; color: var(--teal);
+  background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02) 70%);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.13), 0 6px 14px rgba(8, 20, 42, 0.25);
+}
+.ring.lg .i { width: 27px; height: 27px; }
+
+/* Buttons: the app's raised bubbles. Main action = full bubble; second action = smaller soft bubble. Never aqua-filled. */
+.btn, .btn-primary, .feature-go {
+  min-height: 50px; padding: 0 24px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.26);
+  background: var(--bubble); box-shadow: var(--bubble-shadow); color: #fff; font-weight: 600; font-size: 16px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18); letter-spacing: -0.01em;
+}
+.btn:hover, .btn-primary:hover, .feature-go:hover { background: var(--bubble-hover); filter: none; }
+.btn .i, .btn-primary .i, .feature-go .i { color: var(--teal); width: 18px; height: 18px; }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14.5px; }
+.btn-danger { color: var(--coral); }
+.link-btn {
+  min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bubble-soft); box-shadow: var(--bubble-soft-shadow); color: #fff; font-weight: 600; font-size: 14.5px;
+}
+.link-btn:hover { filter: none; background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.1) 100%); border-color: rgba(255, 255, 255, 0.3); }
+.link-btn .i { color: var(--teal); }
+.icon-btn { border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.24); background: var(--bubble); box-shadow: var(--bubble-soft-shadow); color: #fff; }
+
+/* Chips: the app's soft pills */
+.chip { padding: 6px 13px; border-radius: 999px; font-weight: 600; font-size: 13.5px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.16); color: rgba(255, 255, 255, 0.92); }
+.chip-ok { color: #fff; }
+.chip .dot { background: #4ade80; box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.18); }
+.chip-accent, .feature-status { color: var(--teal); background: rgba(111, 211, 214, 0.1); border-color: rgba(111, 211, 214, 0.3); }
+.feature-status { font-weight: 600; font-size: 13.5px; }
+.demo-tag { color: var(--teal); border-color: var(--teal-line); background: var(--teal-soft); }
+
+/* Fields */
+.input { border-radius: 14px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18); color: #fff; }
+.input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(111, 211, 214, 0.22); }
+
+/* Sidebar: a glass panel with the app's bubble on the page you're on. The website header above carries the logo. */
+.sidebar {
+  background: linear-gradient(180deg, rgba(22, 48, 78, 0.62) 0%, rgba(18, 38, 66, 0.5) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.1); border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-right-radius: 28px; /* rounded top right corner (Ethan 2026-11-23) */
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.04);
+  padding: 30px 16px 24px; gap: 24px;
+}
+.side-brand { padding: 0 10px; gap: 10px; }
+.side-brand .wordmark { display: none; }
+.side-brand-row { justify-content: flex-end; }
+.side-brand-row:not(:has(.nav-close:not([hidden]))) { display: none; }
+.for-biz { font-family: var(--body); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; color: var(--teal); }
+.side-org { padding: 0 10px; gap: 8px; }
+.side-label, .nav-group-label { font-family: var(--body); font-weight: 600; font-size: 11.5px; letter-spacing: 0.16em; color: rgba(255, 255, 255, 0.55); }
+.nav-group-label { padding: 12px 12px 8px; }
+.nav { gap: 3px; }
+.nav-link { gap: 12px; padding: 10px 12px; border-radius: 16px; border: 1px solid transparent; font-weight: 500; font-size: 15px; color: rgba(255, 255, 255, 0.84); }
+.nav-link .ring.sm { width: 20px; height: 20px; color: var(--teal); background: none; box-shadow: none; }
+.nav-link .ring.sm .i { width: 19px; height: 19px; }
+.nav-link:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+.nav-link.active {
+  background: var(--bubble-soft); border-color: rgba(255, 255, 255, 0.22); box-shadow: var(--bubble-soft-shadow);
+  color: #fff; font-weight: 600;
+}
+.nav-link.active .ring { background: none; color: var(--teal); }
+.side-foot { padding: 18px 10px 0; border-top-color: var(--divider); }
+
+/* Organization: the brightest glass on the page, so it stands out from the cards under it */
+.company-card {
+  position: relative; overflow: hidden; padding: 34px 36px; border-radius: 30px; gap: 22px 32px;
+  background:
+    radial-gradient(70% 120% at 100% 0%, rgba(140, 222, 228, 0.34), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 40%),
+    linear-gradient(112deg, rgba(42, 78, 118, 0.94) 0%, rgba(70, 114, 156, 0.88) 50%, rgba(122, 172, 206, 0.86) 100%);
+  border: 1px solid rgba(160, 232, 236, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 0 0 4px rgba(111, 211, 214, 0.1), 0 24px 56px rgba(6, 18, 38, 0.5), 0 0 80px rgba(111, 211, 214, 0.22);
+}
+.company-main { gap: 24px; }
+.company-card .ring.lg {
+  width: 84px; height: 84px; color: #fff;
+  background: radial-gradient(circle at 50% 35%, rgba(150, 232, 236, 0.55), rgba(70, 170, 185, 0.35) 72%);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.3), 0 0 0 7px rgba(111, 211, 214, 0.14), 0 10px 26px rgba(6, 18, 38, 0.35), 0 0 36px rgba(111, 211, 214, 0.35);
+}
+.company-card .ring.lg .i { width: 38px; height: 38px; }
+.company-text { gap: 12px; }
+.company-name { font-family: var(--serif); font-weight: 700; font-size: 42px; line-height: 1.08; letter-spacing: -0.015em; text-shadow: 0 2px 14px rgba(6, 18, 38, 0.35); }
+.company-card .chip { background: rgba(255, 255, 255, 0.16); border-color: rgba(255, 255, 255, 0.26); }
+.company-card .chip-accent { color: #d5fbf9; background: rgba(111, 211, 214, 0.2); border-color: rgba(150, 232, 236, 0.45); }
+.company-card .meta { color: rgba(255, 255, 255, 0.86); font-size: 15px; }
+.company-card .meta .i { color: var(--teal); }
+.company-card .btn { min-height: 56px; padding: 0 30px; font-size: 17px; }
+
+/* Programs */
+.features { gap: 20px; }
+.feature { padding: 26px 24px 24px; gap: 12px; border-color: var(--glass-border); }
+.feature-head { gap: 16px; margin-bottom: 2px; }
+.feature-title { font-family: var(--serif); font-weight: 700; font-size: 23px; line-height: 1.18; letter-spacing: -0.01em; }
+.feature-desc { color: var(--text-2); font-size: 15px; line-height: 1.55; }
+.feature-acts { padding-top: 8px; gap: 10px 12px; }
+
+/* At a glance */
+.stats { gap: 20px; }
+.stat { position: relative; padding: 24px 24px 22px; gap: 2px; }
+a.stat { border-color: var(--glass-border); }
+.stat:hover, a.stat:hover { filter: none; transform: translateY(-1px); border-color: rgba(255, 255, 255, 0.3); }
+.stat .ring { position: absolute; top: 20px; right: 20px; width: 24px; height: 24px; margin: 0; color: var(--teal); }
+.stat .ring .i { width: 21px; height: 21px; }
+.stat-num { font-family: var(--display); font-weight: 700; font-size: 46px; line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 6px; }
+.stat-title { font-weight: 600; font-size: 15.5px; }
+.stat-sub { color: var(--text-3); font-size: 13.5px; }
+
+/* Privacy */
+.privacy { padding: 32px; gap: 10px; }
+.privacy .muted { font-size: 15.5px; }
+.privacy-cols { gap: 20px 0; margin-top: 18px; }
+.privacy-cols > div + div { border-left: 1px solid var(--divider); padding-left: 32px; }
+.privacy-cols > div:first-child { padding-right: 32px; }
+.privacy-head { gap: 12px; font-family: var(--body); font-weight: 700; font-size: 16.5px; margin-bottom: 14px; }
+.privacy-head .ring.sm { width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 70%); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.12); color: var(--teal); }
+.privacy-cols > div + div .privacy-head .ring.sm { color: var(--coral); }
+.ticks { gap: 12px; }
+.ticks li { color: rgba(255, 255, 255, 0.9); font-size: 15.5px; line-height: 1.5; }
+.ticks .i { color: var(--teal); }
+.ticks.never .i { color: var(--coral); }
+
+/* Long email domains wrap instead of running under the Remove button */
+.domain-row .uname { overflow-wrap: anywhere; }
+.domain-row .btn { flex-shrink: 0; }
+
+/* Footer */
+.main > .site-foot { border-top: 1px solid var(--divider); }
+.site-foot-brand { color: var(--text-2); font-size: 14px; }
+
+/* iPad and phone. Cards fill the columns left to right; a card on its own stays in the left column at the same width,
+   never centered and never stretched across (Ethan 2026-11-23). Up to 1150px wide (iPad mini both ways, iPad Air and Pro
+   upright) = 2 columns; 1151-1400px (iPad Air and Pro sideways) = 3 columns; phones = 1 column. */
+@media (max-width: 1400px) {
+  .features .feature:nth-child(3):last-child { grid-column: auto; }
+}
+@media (min-width: 1151px) and (max-width: 1400px) {
+  .features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .feature-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+@media (max-width: 1150px) {
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Workplace App Management schedules and Library templates follow the same iPad columns instead of one stretched column */
+@media (min-width: 601px) and (max-width: 1150px) {
+  .focus-list, .tpl-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1151px) and (max-width: 1400px) {
+  .focus-list, .tpl-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 901px) and (max-width: 1400px) {
+  .main { padding: 36px 32px 80px; }
+  .features { gap: 16px; }
+  .feature { padding: 24px 20px 22px; }
+  .feature-go { padding: 0 18px; }
+  .company-name { font-size: 38px; }
+}
+@media (max-width: 900px) {
+  .topbar { background: rgba(26, 52, 82, 0.86); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .topbar-brand .wordmark { display: none; }
+  .topbar-brand .for-biz { font-size: 12px; letter-spacing: 0.18em; }
+  .sidebar { background: linear-gradient(180deg, #23506a 0%, #1c3a5c 55%, #172e4b 100%); }
+  .shell:not(.nav-open) .sidebar { box-shadow: none; }
+  .page-title { font-size: 38px; }
+  .company-name { font-size: 36px; }
+  .privacy-cols > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--divider); padding-top: 22px; }
+  .privacy-cols > div:first-child { padding-right: 0; }
+}
+@media (max-width: 600px) {
+  .card { padding: 22px 18px; } /* phones keep styles.css's narrower side padding, so wide cards (challenge facts) fit */
+  .features { grid-template-columns: minmax(0, 1fr); }
+  .page-title { font-size: 34px; }
+  .company-card { padding: 26px 22px; border-radius: 28px; }
+  .company-card .ring.lg { width: 72px; height: 72px; }
+  .company-card .ring.lg .i { width: 32px; height: 32px; }
+  .company-name { font-size: 32px; }
+  .feature { padding: 24px 20px 22px; }
+  .feature-title { font-size: 22px; }
+  .stats { gap: 12px; }
+  .stat { padding: 18px 18px 16px; }
+  .stat .ring { top: 16px; right: 16px; }
+  .stat-num { font-size: 36px; }
+  .stats.stats-3 .stat-sub { padding-left: 0; } /* the icon sits top right here, so the small line starts at the left edge */
+  .privacy { padding: 24px 20px; }
+  .card-title { font-size: 23px; }
+}
