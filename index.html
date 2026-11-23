@@ -20,32 +20,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/site.css?v=6d087c35fd">
-<style>
-/* "The Rise Begins Within." with the INNER and RISE definitions under it (Ethan, 2026-11-23): one full-width deep-ocean
-   band in the site's colors, left-aligned. The slogan in the app's serif italic, a small sunrise on a horizon line under
-   it, then each definition on one line with a dash. Only new pieces; the site's own styles are unchanged. */
-.meaning.feat-band{padding:96px 0 100px}
-.meaning h2.slogan{text-align:center;font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-style:italic;font-weight:600;color:#fff;font-size:clamp(30px,3.4vw,48px);line-height:1.1;letter-spacing:-.01em;margin:0;max-width:none}
-.meaning h2.slogan .grad{padding-right:.08em}
-.meaning .horizon{position:relative;width:220px;height:22px;margin:18px auto 34px}
-.meaning .horizon::before{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(127,248,232,0),#7ff8e8 30%,#2ccfc2 70%,rgba(44,207,194,0))}
-.meaning .horizon::after{content:"";position:absolute;left:50%;bottom:2px;width:30px;height:15px;margin-left:-15px;border-radius:30px 30px 0 0;background:linear-gradient(180deg,#7ff8e8,#2ccfc2);box-shadow:0 0 22px 6px rgba(95,240,221,.35)}
-.meaning .defs{display:grid;grid-template-columns:auto auto 1fr;column-gap:.55em;row-gap:14px;align-items:baseline;font-size:20px;line-height:1.6;color:rgba(255,255,255,.88)}
-.meaning .defs .t{min-width:0}
-.meaning .defs b{font-weight:800;letter-spacing:.04em;background:linear-gradient(90deg,#7ff8e8,#2ccfc2);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none}
-.meaning .defs .dash{color:#5ff0dd;font-weight:700}
-.meaning .defs b.rise{letter-spacing:.16em}
-@media (prefers-reduced-motion:no-preference){
-  html.js .meaning .horizon::after{transform:translateY(8px);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .3s,opacity 1.2s ease .3s}
-  html.js .meaning .reveal.in .horizon::after{transform:none;opacity:1}
-}
-@media (max-width:760px){
-  .meaning.feat-band{padding:64px 0 70px}
-  .meaning .horizon{width:170px;margin:14px auto 26px}
-  .meaning .defs{font-size:17px;row-gap:12px}
-}
-</style>
+<link rel="stylesheet" href="assets/site.css?v=2ee37bdda2">
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
@@ -75,17 +50,15 @@
       <figure class="device wch hero-watch"><img src="assets/img/app/watch-challenges.jpg" alt="InneRISE on Apple Watch: 1st in Walking Race" width="416" height="496"></figure>
     </div>
   </div>
+  <div class="wrap brandline reveal" id="meaning">
+    <p class="bl-slogan">The Rise <span class="grad">Begins Within.</span></p>
+    <div class="bl-def">
+      <p><span class="bl-word">Inner</span> <span class="bl-dash">&mdash;</span> <span class="bl-text"><b>Your inner self.</b> Your thoughts, your awareness, your purpose, and what matters most to you.</span></p>
+      <p><span class="bl-word">RISE</span> <span class="bl-dash">&mdash;</span> <span class="bl-text"><b>To rise above distractions,</b> take control of your time, reconnect with people, and live a more meaningful life.</span></p>
+    </div>
+  </div>
   <div class="waves"><svg viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 C 240 60 420 170 720 120 C 1000 72 1200 150 1440 100 L1440 200 L0 200Z" fill="rgba(255,255,255,.12)"/><path d="M0 150 C 260 100 480 190 760 150 C 1040 110 1220 180 1440 140 L1440 200 L0 200Z" fill="rgba(255,255,255,.25)"/><path d="M0 175 C 300 140 520 205 800 175 C 1080 145 1260 195 1440 170 L1440 200 L0 200Z" fill="#fff"/></svg></div>
 </header>
-
-<section class="meaning feat-band t-deep" id="meaning">
-  <div class="wrap reveal">
-    <h2 class="slogan">The Rise Begins <span class="grad">Within.</span></h2>
-    <div class="horizon" aria-hidden="true"></div>
-    <div class="defs"><b>Inner</b><span class="dash">—</span><span class="t">Your inner self. Your thoughts, your awareness, your purpose, and what matters most to you.</span>
-      <b class="rise">RISE</b><span class="dash">—</span><span class="t">To rise above distractions, take control of your time, reconnect with people, and live a more meaningful life.</span></div>
-  </div>
-</section>
 
 <section id="features" class="tour-intro">
   <div class="wrap center">

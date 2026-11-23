@@ -606,3 +606,24 @@ html[data-org="schools"] [data-org-show="schools"],html[data-org="partners"] [da
 /* no aqua buttons (Ethan 2026-11-18 23:07Z): buttons use the site's glass look */
 .btn-aqua{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.34);box-shadow:0 10px 26px rgba(0,10,25,.22),inset 0 1px 0 rgba(255,255,255,.18)}
 .mail{color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+
+/* The Rise Begins Within + the INNER / RISE definition (home hero, Ethan 2026-11-23): on the hero's ocean, left, no boxes, each definition one line with a dash */
+.brandline{position:relative;z-index:2;margin-top:96px}
+.bl-slogan{font-size:clamp(30px,3.2vw,46px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0;text-wrap:balance;text-align:center}
+.bl-def{margin:22px 0 0;display:grid;grid-template-columns:max-content max-content minmax(0,1fr);row-gap:12px}
+.bl-def p{margin:0;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:rgba(255,255,255,.74);grid-column:1/-1;display:grid;grid-template-columns:subgrid;align-items:baseline}
+@supports not (grid-template-columns:subgrid){.bl-def p{grid-template-columns:4.4em 1.9em minmax(0,1fr)}}
+.bl-def b{color:#fff;font-weight:700}
+.bl-word{font-size:1.06em;font-weight:800;letter-spacing:.16em;background:linear-gradient(90deg,#7ff8e8,#2ccfc2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bl-dash{color:var(--aqua);font-weight:300;margin:0 .45em}
+.bl-text{min-width:0}
+@media (prefers-reduced-motion:no-preference){
+  html.js .brandline.reveal .bl-def p{opacity:0;translate:-18px 0;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.7,.2,1)}
+  html.js .brandline.reveal.in .bl-def p{opacity:1;translate:0 0}
+  html.js .brandline.reveal.in .bl-def p:nth-child(1){transition-delay:.35s}
+  html.js .brandline.reveal.in .bl-def p:nth-child(2){transition-delay:.6s}
+}
+@media (max-width:760px){
+  .brandline{margin-top:72px}
+  .bl-def{margin-top:18px;gap:14px}
+}
